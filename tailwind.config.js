@@ -10,6 +10,9 @@ module.exports = {
       // maxWidth: {
       //   1296: "81rem",
       // },
+      colors: {
+        primary: "#0027D5",
+      },
     },
   },
   plugins: [],

@@ -14,11 +14,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="zh-Hant-TW">
       <body className={`${inter.className}`}>
-        <Header />
-        <main className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between">
-          {children}
-        </main>
-        <Footer />
+        <div className="mx-auto max-w-[1920px]">
+          <Header />
+          <main className="flex min-h-screen w-full flex-col items-center justify-between">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
