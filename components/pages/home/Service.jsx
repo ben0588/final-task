@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Service = () => {
   const service = [
@@ -31,23 +33,40 @@ const Service = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-8 px-3 py-16">
-      <h3 className="text-center text-4xl font-bold md:text-left md:text-5xl">
+    <div className="flex flex-col gap-8 py-16">
+      <h3 className="text-center text-5xl font-bold lg:text-left lg:text-4xl">
         專業服務與方案
       </h3>
 
-      {service.map((item) => (
-        <article key={item.title} className="relative">
-          <div className="relative h-[176px] md:h-[320px] md:w-1/2">
-            <Image src={item.img} fill style={{ objectFit: "cover" }} />
-          </div>
-          <div className="-translate-x-1/4 -translate-y-1/4 space-y-3 p-6 md:absolute md:right-0 md:top-0 md:w-1/2 md:translate-y-1/2 md:border md:bg-white">
-            <span className="text-primary text-4xl">一</span>
-            <h3 className="text-3xl font-bold">{item.title}</h3>
-            <p>{item.content}</p>
-          </div>
-        </article>
-      ))}
+      <div className="flex flex-col gap-8 px-3 lg:gap-16 lg:px-28">
+        {service.map((item, index) => (
+          <article
+            key={item.title}
+            className={`relative lg:flex ${index % 2 == 0 ? "lg:flex-row" : "lg:flex-row-reverse"}`}
+          >
+            <div className="relative h-[176px] w-full lg:h-[320px] lg:w-1/2">
+              <Image src={item.img} fill style={{ objectFit: "cover" }} />
+            </div>
+            <div
+              className={`space-y-3 p-6 lg:absolute lg:top-0 lg:w-1/2 lg:translate-y-1/4 lg:bg-white ${index % 2 == 0 ? "lg:right-0 lg:-translate-x-8" : "lg:left-0 lg:translate-x-8"}`}
+            >
+              <span className="text-primary text-4xl">一</span>
+              <h3 className="text-3xl font-bold">{item.title}</h3>
+              <p>{item.content}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <Link
+        href="/"
+        className="flex flex-col items-end justify-end gap-2 px-3 text-3xl font-bold hover:opacity-75 lg:flex-row lg:items-center"
+      >
+        聯繫我，取得更多資訊！{" "}
+        <span className="inline-block rounded-full border-2 border-black p-2">
+          <FaArrowRightLong />
+        </span>
+      </Link>
     </div>
   );
 };
